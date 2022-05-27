@@ -1,0 +1,43 @@
+group 'com.alfredoqt.flutter_openpay'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    dependencies {
+        api('com.squareup.retrofit2:retrofit:2.3.0')
+                {
+                    exclude module: 'okhttp'
+                }
+
+        api 'com.squareup.retrofit2:converter-gson:2.3.0'
+        api 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    }
+}
